@@ -1,2 +1,4 @@
-﻿  Quicksort2.cpp
-  Quicksort2.vcxproj -> C:\Users\Buzz0n\source\repos\sort2\sort2\x64\Debug\Quicksort2.exe
+﻿  stdafx.cpp
+  Quicksort2.cpp
+  LINK : C:\Users\Buzz0n\source\repos\sort2\x64\Debug\Quicksort2.exe not found or not built by the last incremental link; performing full link
+  Quicksort2.vcxproj -> C:\Users\Buzz0n\source\repos\sort2\x64\Debug\Quicksort2.exe
