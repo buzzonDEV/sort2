@@ -1,3 +1,4 @@
-﻿  stdafx.cpp
-  Quicksort2.cpp
-  Quicksort2.vcxproj -> C:\Users\Buzz0n\source\repos\sort2\x64\Debug\Quicksort2.exe
+﻿  Quicksort2.cpp
+c:\users\andreypc\documents\visual studio 2017\projects\quicksort2\sort2\quicksort2\sort.h(77): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+c:\users\andreypc\documents\visual studio 2017\projects\quicksort2\sort2\quicksort2\sort.h(81): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  Quicksort2.vcxproj -> C:\Users\AndreyPC\Documents\Visual Studio 2017\Projects\Quicksort2\sort2\x64\Debug\Quicksort2.exe
