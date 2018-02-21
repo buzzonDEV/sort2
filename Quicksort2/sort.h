@@ -3,23 +3,23 @@
 class sort
 {
 public:
-	sort(); //конструктор
-	~sort(); //деструктор
+	sort(); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	~sort(); //Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°
 
-	//хм... нужно сделать авто выбор сортировки
+	//ГµГ¬... Г­ГіГ¦Г­Г® Г±Г¤ГҐГ«Г ГІГј Г ГўГІГ® ГўГ»ГЎГ®Г° Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ
 	void quick(int a[], long lb, long hb, bool more_memory = false)
 	{
 		if (lb < hb) {
 			long p = GetPiv(a, lb, hb);
 			if (more_memory)
 			{
-				//рекурсией
+				//Г°ГҐГЄГіГ°Г±ГЁГҐГ©
 				this->quick(a, lb, p, more_memory);
 				this->quick(a, p + 1, hb, more_memory);
 			}
 			else
 			{
-				//циклом
+				//Г¶ГЁГЄГ«Г®Г¬
 
 			}
 		}
