@@ -46,9 +46,42 @@ public:
 		//	}
 		//}
 	}
-	void RankSort()
+	void RankSort(int a[], int N)
 	{
+
 	}
+
+	void RadixSort(int a[], int N) {
+		int b[9];
+
+		for (int j = 0; j < 9; j++)
+			b[j] = 0;
+
+		for (int i = 0; i < N; i++)
+			b[a[i]]++;
+		for (int k = 0; k < 9; ++k)
+			std::cout << b[k];
+
+	}
+
+	int MaxElem(int a[], int N) {   //поиск максимального элемента массива
+		int max;
+		for (int i = 1; i < N; i++) {
+			if (a[i] >= a[i - 1])
+				max = a[i];
+		}
+		return max;
+	}
+
+	int MaxRank(int max) {  //поиск максимального разряда
+		int rank=0; //разряд 
+		while (max != 0) {
+			max /= 10;
+			rank++;
+		}
+		return rank;
+	}
+
 	void index()
 	{
 	}
