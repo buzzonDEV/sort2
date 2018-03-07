@@ -51,25 +51,31 @@ public:
 
 	}
 
-	void RadixSort(int a[], int N) {
-		const int desyat = 10;
-		int b[desyat]; //вспомогательный массив
+	void CountSort(int a[], int N, int rank) {  //сортировка подсчетом
+		int b[10];//вспомогательный массив
 
-		for (int j = 0; j < desyat; j++) //зануляем массив
+		for (int j = 0; j < 10; j++) //зануляем массив
 			b[j] = 0;
 
-		for (int i = 0; i < N; i++) //считаем количество элементов n-го разряда
-			b[a[i]]++;
-
-		for (int k = 0; k < desyat; ++k) {
-			std::cout << b[k];
+		for (int i = 0; i < N; i++) {//считаем количество элементов n-го разряд
+				b[(a[i] / (int)(pow(10,rank))) % 10]++;
 		}
-		Fibon(&b, desyat);
-	}
 
-	void Fibon(int* a[], int N) {
+		for (int k = 0; k < 10; ++k) {
+			std::cout << b[k]<<"  ";
+		}
+		Fibon(b, 10);
+		//std::cout << "\n";
+		//for (int k = 0; k < desyat; ++k) {
+		//	std::cout << b[k] << " ";
+		//}
+
+	}
+	
+
+	void Fibon(int a[], int N) {
 		for (int i = 1; i < N; i++)
-			*a[i] += *a[i - 1];
+			a[i] += a[i - 1];
 	}
 
 	int MaxElem(int a[], int N) {   //поиск максимального элемента массива
