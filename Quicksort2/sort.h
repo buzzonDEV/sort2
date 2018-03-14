@@ -46,25 +46,43 @@ public:
 		//	}
 		//}
 	}
-	void RankSort(int a[], int N)
+	void RankSort(int a[], int N) //поразрядная сортировка
 	{
-
+		int max = MaxElem(a, N); //ищем максимальный элемент массива
+		int mrank = MaxRank(max); //ищем максимальный разряд
+		for (int i=0; i < mrank; i++) {
+			CountSort(a, N, mrank);
+		}
 	}
 
-	void CountSort(int a[], int N, int rank) {  //сортировка подсчетом
+	void CountSort(int a[],int N, int rank) {  //сортировка подсчетом
 		int b[10];//вспомогательный массив
+
 
 		for (int j = 0; j < 10; j++) //зануляем массив
 			b[j] = 0;
 
-		for (int i = 0; i < N; i++) {//считаем количество элементов n-го разряд
+		for (int i = 0; i < N; i++) {//считаем количество элементов n-го разряда
 				b[(a[i] / (int)(pow(10,rank))) % 10]++;
 		}
 
+		Fibon(b, 10); //
+
 		for (int k = 0; k < 10; ++k) {
-			std::cout << b[k]<<"  ";
+			std::cout << b[k] << "  ";
+			}
+
+		for (int j = 0; j < N; j++) {
+			int r = a[j] / (int)(pow(10, rank)) % 10; // значение rank ранга j-го элемента массива
+			if (b[r] - b[r - 1] == 0) {
+				std::swap(a[j], a[b[r]]);
+				b[r]--;
+			}
+			else j++;
 		}
-		Fibon(b, 10);
+		std::cout << "\n";
+		for (int i = 0; i < N; i++)
+			std::cout << a[i] << " ";
 		//std::cout << "\n";
 		//for (int k = 0; k < desyat; ++k) {
 		//	std::cout << b[k] << " ";
