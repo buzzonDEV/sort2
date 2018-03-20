@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "sort.h"
+#include <iostream>
+#include <cmath>
+
+using namespace std;
 
 // Быстрая
 void sort::Quick(int a[], long lb, long hb)
@@ -8,8 +12,8 @@ void sort::Quick(int a[], long lb, long hb)
 	{
 		long p = GetPiv(a, lb, hb); // получение опорной точки по разбиению Хоара
 		//рекурсия
-		quick(a, lb, p);
-		quick(a, p + 1, hb);
+		Quick(a, lb, p);
+		Quick(a, p + 1, hb);
 	}
 };
 
@@ -34,40 +38,42 @@ void sort::Shell(int a[], const long N)
 // Подсчетом
 void sort::CountSort(int a[], int N, int rank)
 {
-	//	void CountSort(int a[],int N, int rank) {  //сортировка подсчетом
-	//		int b[10];//вспомогательный массив
-	//
-	//
-	//		for (int j = 0; j < 10; j++) //зануляем массив
-	//			b[j] = 0;
-	//
-	//		for (int i = 0; i < N; i++) {//считаем количество элементов n-го разряда
-	//				b[(a[i] / (int)(pow(10,rank))) % 10]++;
-	//		}
-	//
-	//		Fibon(b, 10); //
-	//
-	//		for (int k = 0; k < 10; ++k) {
-	//			std::cout << b[k] << "  ";
-	//			}
-	//
-	//		for (int j = 0; j < N; j++) {
-	//			int r = a[j] / (int)(pow(10, rank)) % 10; // значение rank ранга j-го элемента массива
-	//			if (b[r] - b[r - 1] == 0) {
-	//				std::swap(a[j], a[b[r]]);
-	//				b[r]--;
-	//			}
-	//			else j++;
-	//		}
-	//		std::cout << "\n";
-	//		for (int i = 0; i < N; i++)
-	//			std::cout << a[i] << " ";
-	//		//std::cout << "\n";
-	//		//for (int k = 0; k < desyat; ++k) {
-	//		//	std::cout << b[k] << " ";
-	//		//}
-	//
-	//	}
+	int b[10];// Вспомогательный массив 0-9
+	for (int i = 0; i < 10; i++) // Зануляем массив
+		b[i] = 0;
+
+	for (int i = 0; i < N; i++) // Считаем количество элементов n-го разряда
+		b[(a[i] / (int)(pow(10, rank))) % 10]++;
+
+	for (int i = 0; i < 9; i++) // Пересчет массива
+		b[i + 1] += b[i];
+
+	for (int i = 0; i < 10; i++)
+		cout << b[i] << ' ';
+	cout << '\n';
+
+	int num = 0,n = 0;
+	for (int i = 0; i < b[9]; i++)
+	{
+		int num = (a[n] / (int)(pow(10, rank))) % 10;
+		cout << '\n' << num << '\t' << b[num] << '\n';
+		if(b[num] > 0 && a[b[num]] > 0)
+		{
+			swap(a[n], a[b[num]]);
+			b[num]--;
+		}
+		else 
+		{
+			++n;
+		}
+		for (int i = 0; i < N; i++) {
+			cout << a[i] << " ";
+		}
+
+	}
+
+
+
 };
 
 // Поразрядная
