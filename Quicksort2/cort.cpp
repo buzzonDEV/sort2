@@ -52,22 +52,16 @@ void sort::CountSort(int a[], int N, int rank)
 		cout << b[i] << ' ';
 	cout << '\n';
 
-	int num = 0,n = 0;
+	int n = 0;
 	for (int i = 0; i < b[9]; i++)
 	{
 		int num = (a[n] / (int)(pow(10, rank))) % 10;
-		cout << '\n' << num << '\t' << b[num] << '\n';
-		if(b[num] > 0 && a[b[num]] > 0)
-		{
-			swap(a[n], a[b[num]]);
-			b[num]--;
-		}
+		if(b[num] > n)
+			swap(a[n], a[--b[num]]);
 		else 
 		{
-			++n;
-		}
-		for (int i = 0; i < N; i++) {
-			cout << a[i] << " ";
+			n++;
+			i--;
 		}
 
 	}
