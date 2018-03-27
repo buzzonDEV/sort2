@@ -36,7 +36,7 @@ void sort::Shell(int a[], const long N)
 };
 
 // Подсчетом
-void sort::CountSort(int a[], int N, int rank)
+void sort::CountSort(int a[], int N, int rank, int g[])
 {
 	
 	int b[10];// Вспомогательный массив 0-9
@@ -49,54 +49,26 @@ void sort::CountSort(int a[], int N, int rank)
 	for (int i = 0; i < 9; i++) // Пересчет массива
 		b[i + 1] += b[i];
 
-	for (int i = 0; i < 10; i++)
-		cout << b[i] << ' ';
-	cout << '\n';
-
-	int n = N-1;
-	for (int m = N; m > 1; m--)
+	for (int m = N-1; m >= 0; m--) 
 	{
-		int num = (a[n] / (int)(pow(10, rank))) % 10; // сортируемый ранг
-		cout << n;
-		cout << "\n";
-		for (int i = 0; i < N; i++) {
-			cout << a[i] << " ";
-		}
-		cout << "\n";
-		for (int i = 0; i < 10; i++) {
-			cout << b[i] << " ";
-		}
-		cout << "\n";
-		if (b[num] < n) {//если во вспомогательном массиве кол-во сортируемых чисел больше позиции с которой работаем
-			swap(a[n], a[--b[num]]);
-		}
-		else
-		{
-			n--;// сдвигаем шаг
-			b[num]--;
-		}
-		for (int i = 0; i < N; i++) {
-			cout << a[i] << " ";
-		}
-		cout << "\n";
-		for (int i = 0; i < 10; i++) {
-			cout << b[i] << " ";
-		}
-		cout << "\n" << "\n";
+		int num = (a[m] / (int)(pow(10, rank))) % 10; // сортируемый ранг
+		g[--b[num]] = a[m];
 	}
 };
 
 // Поразрядная
-void sort::RankSort(int a[], int N)
+void sort::RankSort(int a[], int N, int g[])
 {
 	int max = MaxElem(a, N); //ищем максимальный элемент массива
 	int mrank = MaxRank(max); //ищем максимальный разряд
 	for (int i = 0; i < mrank; i++) {
-		CountSort(a, N, i);
+		CountSort(a, N, i, g);
+		for (int i = 0; i < N; i++)
+		{
+			a[i] = g[i];
+		}
 	}
 };
-
-
 
 int sort::GetPiv(int a[], long lb, long hb) {
 	int pivot = a[lb]; //сначала за опорную точку считается первый элемент массива
