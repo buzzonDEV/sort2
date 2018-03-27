@@ -54,16 +54,35 @@ void sort::CountSort(int a[], int N, int rank)
 	cout << '\n';
 
 	int n = N-1;
-	for (int m = N; m > 0; m--)
+	for (int m = N; m > 1; m--)
 	{
 		int num = (a[n] / (int)(pow(10, rank))) % 10; // сортируемый ранг
-		if (b[num]<=n)//если во вспомогательном массиве кол-во сортируемых чисел больше позиции с которой работаем
+		cout << n;
+		cout << "\n";
+		for (int i = 0; i < N; i++) {
+			cout << a[i] << " ";
+		}
+		cout << "\n";
+		for (int i = 0; i < 10; i++) {
+			cout << b[i] << " ";
+		}
+		cout << "\n";
+		if (b[num] < n) {//если во вспомогательном массиве кол-во сортируемых чисел больше позиции с которой работаем
 			swap(a[n], a[--b[num]]);
+		}
 		else
 		{
-			--n;// сдвигаем шаг
-			--b[num];
+			n--;// сдвигаем шаг
+			b[num]--;
 		}
+		for (int i = 0; i < N; i++) {
+			cout << a[i] << " ";
+		}
+		cout << "\n";
+		for (int i = 0; i < 10; i++) {
+			cout << b[i] << " ";
+		}
+		cout << "\n" << "\n";
 	}
 };
 
